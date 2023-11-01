@@ -22,7 +22,6 @@
   right: 0;
   left: 0;
   height: 0; /* Initially setting the height to 0 */
-  background-color: rgba(0, 0, 0, 0.600); /* background color for the overlay */
   transition: height 0.3s ease-in-out; /* Transition for the height property */
 }
 
