@@ -15,13 +15,36 @@ function App() {
 	const [checked, setChecked] = useState(Array(10).fill(false));
 	const handleChecked = (index) => {
 		const newState = checked.map((item, i) => (i === index ? !item : item));
-    setChecked(newState);
+		setChecked(newState);
 	};
+
+	const count = checked.reduce((accumulator, currentValue) => {
+		return currentValue === true ? accumulator + 1 : accumulator;
+	}, 0);
+	// console.log(checked)
+	// console.log(count)
 	return (
-		<div className='bg-slate-200 p-10'>
-			<div className='bg-white p-8 border border-gray-300 shadow-md rounded-xl'>
+		<div className='bg-slate-200 p-12'>
+			<div className='bg-white px-10 py-5 border border-gray-300 shadow-md rounded-t-xl flex justify-between items-center'>
+				{checked.includes(true) ? (
+					<h3 className='font-bold text-2xl'>
+						<input type='checkbox' checked className='mr-5 h-5 w-5' />
+						{count} {count > 1 ? "Files" : "File"} Selected
+					</h3>
+				) : (
+					<h3 className='font-bold text-2xl'>Gallery</h3>
+				)}
+
+				<div
+					className={`text-red-600 font-semibold ${
+						checked.includes(true) ? "visible" : "hidden"
+					}`}>
+					Delete {count > 1 ? "Files" : "File"}
+				</div>
+			</div>
+			<div className='bg-white p-10 border border-gray-300 shadow-md rounded-b-xl'>
 				<div className='grid grid-cols-5 gap-5'>
-					<div className='col-span-2 row-span-2 gallery-img'>
+					<div className='col-span-2 row-span-2 gallery-img' draggable>
 						<div
 							className={`gallery-img-hover bg-opacity-60 ${
 								checked[0] == true ? "bg-white h-[100%]" : "bg-black"
@@ -36,7 +59,7 @@ function App() {
 
 						<img src={img1} alt='' />
 					</div>
-					<div className='gallery-img'>
+					<div className='gallery-img' draggable>
 						<div
 							className={`gallery-img-hover bg-opacity-60 ${
 								checked[1] == true ? "bg-white h-[100%]" : "bg-black"
