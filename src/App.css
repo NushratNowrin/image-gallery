@@ -1,0 +1,5 @@
+.gallery-img{
+  border: 1.5px solid rgb(194, 194, 194);
+  border-radius: 10px;
+  overflow: hidden;
+}
