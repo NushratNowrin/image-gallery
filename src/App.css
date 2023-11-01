@@ -5,18 +5,7 @@
   overflow: hidden;
   cursor: pointer;
 }
-/* .gallery-img-hover{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  visibility: hidden;
-  transition: 2s ease-in-out;
-}
-.gallery-img:hover > .gallery-img-hover{
-  visibility: visible;
-} */
+
 .gallery-img-hover {
   position: absolute;
   bottom: 0; /* Placing the overlay at the bottom */
@@ -26,9 +15,20 @@
   transition: height 0.3s ease-in-out; /* Transition for the height property */
 }
 
+.featured-button{
+  position: absolute;
+  bottom: 10px;
+  visibility: hidden;
+}
+
 .gallery-img:hover > .gallery-img-hover {
   height: 100%; /* Setting the height to 100% on hover to reveal the entire overlay */
 }
+
+.gallery-img-hover:hover > .featured-button{
+  visibility: visible;
+}
+
 
 
 
