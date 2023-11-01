@@ -16,36 +16,47 @@ function App() {
 			<div className='bg-white p-8 border border-gray-300 shadow-md rounded-xl'>
 				<div className='grid grid-cols-5 gap-5'>
 					<div className='col-span-2 row-span-2 gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img1} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img2} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img3} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img4} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img5} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img6} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img7} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img8} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img9} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img10} alt='' />
 					</div>
-					<div className="gallery-img">
+					<div className='gallery-img'>
+						<div className='gallery-img-hover bg-black bg-opacity-30'></div>
 						<img src={img2} alt='' />
 					</div>
 				</div>
