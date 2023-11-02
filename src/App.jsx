@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { MdFeaturedVideo } from "react-icons/md";
 
 function App() {
 	const allImages = [
@@ -95,21 +96,23 @@ function App() {
 					className={`gallery-img-hover bg-opacity-60 ${
 						checked[index] ? "bg-white h-[100%]" : "bg-black"
 					}`}>
-					<input
-						type='checkbox'
-						onChange={() => handleChecked(index)}
-						checked={checked[index]}
-						className={`h-5 w-5 m-5 ${checked[index] ? "text-blue-500" : ""}`}
-					/>
-					{checked[index] || index === 0 ? (
-						""
-					) : (
-						<button
-							className='featured-button bg-blue-500 text-white text-xs px-2 py-1 rounded hover:bg-blue-700 transition-all'
-							onClick={() => handleSetFeatureImage(index)}>
-							Set Featured
-						</button>
-					)}
+					
+						<input
+							type='checkbox'
+							onChange={() => handleChecked(index)}
+							checked={checked[index]}
+							className="h-5 w-5 m-5"
+						/>
+						{checked[index] || index === 0 ? (
+							""
+						) : (
+							<button
+								className='featured-button text-orange-500 hover:text-orange-300'
+								onClick={() => handleSetFeatureImage(index)} title="Set as Featured Image">
+								<MdFeaturedVideo className="lg:text-xl text-lg"/>
+							</button>
+						)}
+				
 				</div>
 
 				<img src={image} alt='' />
@@ -119,27 +122,27 @@ function App() {
 
 	return (
 		<DndProvider backend={HTML5Backend}>
-			<div className='bg-slate-200 p-12'>
-				<div className='bg-white px-10 py-5 border border-gray-300 shadow-md rounded-t-xl flex justify-between items-center'>
+			<div className='bg-slate-200 xs:p-12 p-0'>
+				<div className='bg-white xxs:px-10 px-2 py-5 border border-gray-300 shadow-md rounded-t-xl flex justify-between items-center'>
 					{checked.includes(true) ? (
-						<h3 className='font-bold text-2xl'>
-							<input type='checkbox' checked className='mr-5 h-5 w-5' />
+						<h3 className='sm:font-bold font-semibold sm:text-2xl text-lg'>
+							<input type='checkbox' checked className='sm:mr-5 mr-1 sm:h-5 h-4 sm:w-5 w-4' />
 							{count} {count > 1 ? "Files" : "File"} Selected
 						</h3>
 					) : (
-						<h3 className='font-bold text-2xl'>Gallery</h3>
+						<h3 className='sm:font-bold font-semibold sm:text-2xl text-lg'>Gallery</h3>
 					)}
 
 					<div
 						onClick={handleDelete}
-						className={`text-red-600 font-semibold hover:underline cursor-pointer ${
+						className={`text-red-600 font-semibold sm:text-base text-sm hover:underline cursor-pointer ${
 							checked.includes(true) ? "visible" : "hidden"
 						}`}>
 						Delete {count > 1 ? "Files" : "File"}
 					</div>
 				</div>
-				<div className='bg-white p-10 border border-gray-300 shadow-md rounded-b-xl'>
-					<div className='grid grid-cols-5 gap-5'>
+				<div className='bg-white xxs:px-10 px-2 py-10 border border-gray-300 shadow-md rounded-b-xl'>
+					<div className='grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-5'>
 						{images.map((image, index) => (
 							<ImageItem key={index} index={index} image={image} />
 						))}

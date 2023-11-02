@@ -17,7 +17,8 @@
 
 .featured-button{
   position: absolute;
-  bottom: 10px;
+  right: 20px;
+  top: 20px;
   visibility: hidden;
 }
 
@@ -28,7 +29,6 @@
 .gallery-img-hover:hover > .featured-button{
   visibility: visible;
 }
-
 
 
 
