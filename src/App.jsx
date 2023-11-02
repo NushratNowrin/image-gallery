@@ -4,8 +4,7 @@ import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
-  const [checked, setChecked] = useState(Array(11).fill(false));
-  const [images, setImages] = useState([
+  const allImages = [
     "../src/assets/images/image-11.jpeg",
     "../src/assets/images/image-3.webp",
     "../src/assets/images/image-2.webp",
@@ -17,8 +16,10 @@ function App() {
     "../src/assets/images/image-8.webp",
     "../src/assets/images/image-1.webp",
     "../src/assets/images/image-6.webp",
-  ]);
-
+  ]
+  const [images, setImages] = useState(allImages);
+  const [checked, setChecked] = useState(Array(allImages.length).fill(false));
+  
 
   const moveImage = (dragIndex, hoverIndex) => {
     const draggedImage = images[dragIndex];
@@ -36,15 +37,6 @@ function App() {
     });
   };
   
-  // const moveImage = (dragIndex, hoverIndex) => {
-  //   const draggedImage = images[dragIndex];
-  //   setImages((prevImages) => {
-  //     const updatedImages = prevImages.filter((img, index) => index !== dragIndex);
-  //     updatedImages.splice(hoverIndex, 0, draggedImage);
-  //     return updatedImages;
-  //   });
-  // };
-
   const handleChecked = (index) => {
     const newState = checked.map((item, i) => (i === index ? !item : item));
     setChecked(newState);
@@ -61,6 +53,11 @@ function App() {
     const [firstImage] = newImages.splice(index, 1);
     newImages.unshift(firstImage);
     setImages(newImages);
+    console.log(checked)
+    if(checked[0] === true){
+      checked[0] = false;
+      handleChecked(1);
+    }
   };
 
   const count = checked.reduce((accumulator, currentValue) => {
