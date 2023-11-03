@@ -177,7 +177,7 @@ function App() {
 							<ImageItem key={index} index={index} image={image} />
 						))}
 
-            <div className="relative border-2 border-dashed rounded-lg p-4 hover:bg-gray-50 transition-colors ease-linear">
+            <div className="relative border-2 border-dashed border-gray-400 rounded-lg p-4 hover:bg-gray-50 transition-colors ease-linear">
             <input
               type="file"
               multiple
@@ -188,9 +188,9 @@ function App() {
               title="Try to upload photos..."
               onChange={handleImageUpload}
             />
-             <div className="h-full w-full flex flex-col justify-center items-center gap-y-4">
+             <div className="h-full w-full flex flex-col justify-center items-center xs:gap-y-4 gap-y-2 xxs:py-5 py-3">
               <IoImage className="text-xl"/>
-              <span className="whitespace-nowrap">Add Images</span>
+              <span className="whitespace-nowrap xxs:text-base text-sm">Add Images</span>
             </div>
 
             </div>
