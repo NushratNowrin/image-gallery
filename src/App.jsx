@@ -31,8 +31,10 @@ function App() {
 		img10,
 		img11,
 	];
+  
 	const [images, setImages] = useState(allImages);
 	const [checked, setChecked] = useState(Array(allImages.length).fill(false));
+  // console.log(images);
 
 	const moveImage = (dragIndex, hoverIndex) => {
 		const draggedImage = images[dragIndex];
@@ -58,6 +60,17 @@ function App() {
 		const newState = checked.map((item, i) => (i === index ? !item : item));
 		setChecked(newState);
 	};
+
+  const handleAllUnchecked = () => {
+    
+    const allUnChecked = checked.map((item) => {
+      if (item === true) {
+        return false;
+      }
+      return item;
+    });
+    setChecked(allUnChecked);
+  }
 
 	const handleDelete = () => {
 		const newImages = images.filter((_, index) => !checked[index]);
@@ -156,7 +169,7 @@ function App() {
 				<div className='bg-white xxs:px-10 px-2 py-5 border border-gray-300 shadow-md rounded-t-xl flex justify-between items-center'>
 					{checked.includes(true) ? (
 						<h3 className='sm:font-bold font-semibold sm:text-2xl text-lg'>
-							<input type='checkbox' checked className='sm:mr-5 mr-1 sm:h-5 h-4 sm:w-5 w-4' />
+							<input type='checkbox' defaultChecked onChange={() => handleAllUnchecked()} className='sm:mr-5 mr-1 sm:h-5 h-4 sm:w-5 w-4' />
 							{count} {count > 1 ? "Files" : "File"} Selected
 						</h3>
 					) : (
