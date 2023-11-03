@@ -15,6 +15,7 @@ module.exports = {
     // For error handling
 		"react/prop-types": 0,
 		"no-unused-vars": 0,
+		"no-undef": 0,
 		"react-refresh/only-export-components": [
 			"warn",
 			{ allowConstantExport: true },

@@ -1,22 +1,35 @@
-import "./App.css";
 import { useState } from "react";
 import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { MdFeaturedVideo } from "react-icons/md";
+import { IoImage } from "react-icons/io5";
+import "./App.css";
+import img1 from "../src/assets/images/image-11.jpeg";
+import img2 from "../src/assets/images/image-3.webp";
+import img3 from "../src/assets/images/image-2.webp";
+import img4 from "../src/assets/images/image-7.webp";
+import img5 from "../src/assets/images/image-5.webp";
+import img6 from "../src/assets/images/image-9.webp";
+import img7 from "../src/assets/images/image-10.jpeg";
+import img8 from "../src/assets/images/image-4.webp";
+import img9 from "../src/assets/images/image-8.webp";
+import img10 from "../src/assets/images/image-1.webp";
+import img11 from "../src/assets/images/image-6.webp";
+
 
 function App() {
 	const allImages = [
-		"../src/assets/images/image-11.jpeg",
-		"../src/assets/images/image-3.webp",
-		"../src/assets/images/image-2.webp",
-		"../src/assets/images/image-7.webp",
-		"../src/assets/images/image-5.webp",
-		"../src/assets/images/image-9.webp",
-		"../src/assets/images/image-10.jpeg",
-		"../src/assets/images/image-4.webp",
-		"../src/assets/images/image-8.webp",
-		"../src/assets/images/image-1.webp",
-		"../src/assets/images/image-6.webp",
+		img1,
+		img2,
+		img3,
+		img4,
+		img5,
+		img6,
+		img7,
+		img8,
+		img9,
+		img10,
+		img11,
 	];
 	const [images, setImages] = useState(allImages);
 	const [checked, setChecked] = useState(Array(allImages.length).fill(false));
@@ -64,6 +77,23 @@ function App() {
 		}
 	};
 
+  const handleImageUpload = (event) => {
+    const newImages = [...images];
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        newImages.push(reader.result);
+        setImages(newImages);
+        setChecked((prev) => [...prev, false]);
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+  };
+
 	const count = checked.reduce((accumulator, currentValue) => {
 		return currentValue === true ? accumulator + 1 : accumulator;
 	}, 0);
@@ -107,7 +137,7 @@ function App() {
 							""
 						) : (
 							<button
-								className='featured-button text-orange-500 hover:text-orange-300'
+								className='featured-button text-orange-200 transition-all hover:text-orange-400'
 								onClick={() => handleSetFeatureImage(index)} title="Set as Featured Image">
 								<MdFeaturedVideo className="lg:text-xl text-lg"/>
 							</button>
@@ -146,6 +176,24 @@ function App() {
 						{images.map((image, index) => (
 							<ImageItem key={index} index={index} image={image} />
 						))}
+
+            <div className="relative border-2 border-dashed rounded-lg p-4 hover:bg-gray-50 transition-colors ease-linear">
+            <input
+              type="file"
+              multiple
+              accept=".png, .webp, .jpg"
+              name="images"
+              id="images"
+              className="absolute top-0 left-0 h-full w-full opacity-0 cursor-pointer"
+              title="Try to upload photos..."
+              onChange={handleImageUpload}
+            />
+             <div className="h-full w-full flex flex-col justify-center items-center gap-y-4">
+              <IoImage className="text-xl"/>
+              <span className="whitespace-nowrap">Add Images</span>
+            </div>
+
+            </div>
 					</div>
 				</div>
 			</div>
