@@ -3,6 +3,14 @@
 ## Hosted on Firebase
 Live Link: https://image-gallery-a4566.web.app/
 
+## Used Technologies
+1. **React**
+2. **react-dnd**
+3. **react-dnd-html5-backend**
+4. **react-dnd-touch-backend**
+5. **react-icons**
+6. **Tailwind CSS**
+
 ## Functionality
 1. **Gallery Layout:**
      - Implemented a grid layout for image gallery.
