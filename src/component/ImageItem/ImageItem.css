@@ -1,0 +1,32 @@
+.gallery-img{
+    position: relative;
+    border: 1.5px solid rgb(194, 194, 194);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .gallery-img-hover {
+    position: absolute;
+    bottom: 0; /* Placing the overlay at the bottom */
+    right: 0;
+    left: 0;
+    height: 0; /* Initially setting the height to 0 */
+    transition: height 0.3s ease-in-out; /* Transition for the height property */
+  }
+  
+  
+  .gallery-img:hover > .gallery-img-hover {
+    height: 100%; /* Setting the height to 100% on hover to reveal the entire overlay */
+  }
+
+  .featured-button{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    visibility: hidden;
+  }
+  
+  .gallery-img-hover:hover > .featured-button{
+    visibility: visible;
+  }
